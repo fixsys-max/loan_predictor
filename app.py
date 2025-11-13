@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from model import load_model, preprocess_data, predict_model
+from model import load_model, predict_model
 
 
 def process_main_page():
@@ -17,11 +17,20 @@ def show_main_page():
     )
     st.title('Прогноз одобрения кредита')
     st.write('Приложение позволяет предсказать одобрение кредита на основе предоставленных данных.')
+    st.divider()
 
+
+def write_selected_model(model_name: str):
+    st.write(f'Выбранная модель: ***{model_name}***')
+    st.write(' ')
 
 def write_user_data(df: pd.DataFrame):
-    st.write('Данные пользователя:')
-    st.write(df)
+    st.write('**Данные пользователя**')
+    st.write('Годовой доход:', df['income'].iloc[0])
+    st.write('Кредитный рейтинг:', df['credit_score'].iloc[0])
+    st.write('Сумма кредита:', df['loan_amount'].iloc[0])
+    st.write('Стаж работы:', df['years_employed'].iloc[0])
+    st.write('Баллы фактора риска:', df['points'].iloc[0])
 
 
 def write_prediction_result(predicted_approval: int):
@@ -29,7 +38,6 @@ def write_prediction_result(predicted_approval: int):
         st.info('Результат предсказания: Одобрен')
     else:
         st.error('Результат предсказания: Отклонен')
-    st.markdown(f'Результат предсказания: {":green[Одобрен]" if predicted_approval == 1 else ":red[Отклонен]"}')
 
 
 def process_side_bar():
@@ -46,7 +54,7 @@ def process_side_bar():
         "XGBoost",
         "LightGBM"
     ]
-    selected_model = st.sidebar.selectbox('Выберете модель', model_list, index=1)
+    selected_model = st.sidebar.selectbox('Модель', model_list, index=1)
 
     st.sidebar.header('Ввод данных:')
     income = st.sidebar.number_input('Годовой доход', min_value=0)
@@ -57,6 +65,7 @@ def process_side_bar():
 
 
     if st.sidebar.button('Предсказать'):
+        write_selected_model(selected_model)
         model, scaler, label_encoders = load_model(selected_model)
         new_customer = pd.DataFrame({
             'income': [income],
