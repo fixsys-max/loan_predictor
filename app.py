@@ -33,6 +33,21 @@ def write_prediction_result(predicted_approval: int):
 
 
 def process_side_bar():
+    st.sidebar.header('Выбор модели')
+    model_list = [
+        "Logistic Regression",
+        "Decision Tree",
+        "Random Forest",
+        "Gradient Boosting",
+        "AdaBoost",
+        "Naive Bayes",
+        "SVM",
+        "KNN",
+        "XGBoost",
+        "LightGBM"
+    ]
+    selected_model = st.sidebar.selectbox('Выберете модель', model_list, index=1)
+
     st.sidebar.header('Ввод данных:')
     income = st.sidebar.number_input('Годовой доход', min_value=0)
     credit_score = st.sidebar.number_input('Кредитный рейтинг', min_value=0, max_value=1000)
@@ -40,9 +55,9 @@ def process_side_bar():
     years_employed = st.sidebar.number_input('Стаж работы', min_value=0)
     points = st.sidebar.number_input('Баллы фактора риска', min_value=0)
 
-    model = load_model()
 
     if st.sidebar.button('Предсказать'):
+        model, scaler, label_encoders = load_model(selected_model)
         new_customer = pd.DataFrame({
             'income': [income],
             'credit_score': [credit_score],
@@ -50,10 +65,9 @@ def process_side_bar():
             'years_employed': [years_employed],
             'points': [points]
         })
-        new_customer = preprocess_data(new_customer)
-        predicted_approval = predict_model(model, new_customer)
         write_user_data(new_customer)
-        write_prediction_result(predicted_approval)
+        predicted_approval = predict_model(model, new_customer, scaler, label_encoders)
+        write_prediction_result(predicted_approval[0])
 
 
 if __name__ == '__main__':
