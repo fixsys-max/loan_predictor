@@ -29,10 +29,10 @@ def write_selected_model(model_name: str):
 
 def write_user_data(df: pd.DataFrame):
     st.write("**Данные пользователя**")
-    st.write("Годовой доход:", df["income"].iloc[0])
+    st.write("Годовой доход, $:", df["income"].iloc[0])
     st.write("Кредитный рейтинг:", df["credit_score"].iloc[0])
-    st.write("Сумма кредита:", df["loan_amount"].iloc[0])
-    st.write("Стаж работы:", df["years_employed"].iloc[0])
+    st.write("Сумма кредита, $:", df["loan_amount"].iloc[0])
+    st.write("Стаж работы, лет:", df["years_employed"].iloc[0])
     st.write("Баллы фактора риска:", df["points"].iloc[0])
 
 
@@ -60,12 +60,12 @@ def process_side_bar():
     selected_model = st.sidebar.selectbox("Модель", model_list, index=1)
 
     st.sidebar.header("Ввод данных:")
-    income = st.sidebar.number_input("Годовой доход", min_value=0)
+    income = st.sidebar.number_input("Годовой доход, $", min_value=0)
     credit_score = st.sidebar.number_input(
         "Кредитный рейтинг", min_value=0, max_value=1000
     )
-    loan_amount = st.sidebar.number_input("Сумма кредита", min_value=0)
-    years_employed = st.sidebar.number_input("Стаж работы", min_value=0)
+    loan_amount = st.sidebar.number_input("Сумма кредита, $", min_value=0)
+    years_employed = st.sidebar.number_input("Стаж работы, лет", min_value=0)
     points = st.sidebar.number_input("Баллы фактора риска", min_value=0)
 
     if st.sidebar.button("Предсказать"):
