@@ -20,23 +20,24 @@ Try app [here](https://titanic.streamlit.app/)!
 
 For directly run streamlit locally in the repo root folder as follows:
 
-<font color="orange" background-color="black">Warning: The requirements.txt file was created for Python 3.12.3. If you have a different version of Python or encounter errors during installation, install the required modules manually.</font>
+><font color="red">Warning:</font> 
+<br>The requirements.txt file was created for Python 3.12.3. If you have a different version of Python or encounter errors during installation, install the required modules manually.
 
 #### Linux:
 ```shell
-$ python3 -m venv venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
-$ streamlit run app.py
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
 ```
 For some systems, you may need to use 'python' instead of 'python3'.
 
 #### Windows:
 ```shell
-$ python -m venv venv
-$ .\venv\Scripts\activate
-$ pip install -r requirements.txt
-$ streamlit run app.py
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run app.py
 ```
 
 Open http://localhost:8501 to view the app.
