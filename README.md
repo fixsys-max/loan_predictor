@@ -20,6 +20,8 @@ Try app [here](https://titanic.streamlit.app/)!
 
 For directly run streamlit locally in the repo root folder as follows:
 
+<text style="color: orange; background-color: black">Warning: The requirements.txt file was created for Python 3.12.3. If you have a different version of Python or encounter errors during installation, install the required modules manually.</text>
+
 #### Linux:
 ```shell
 $ python3 -m venv venv
