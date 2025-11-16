@@ -3,7 +3,7 @@
 
 This project demonstrates how to present machine learning solution as a web application using [Streamlit](https://www.streamlit.io/) framework. The data used in this repo is the [Loan approval dataset](https://www.kaggle.com/datasets/anishdevedward/loan-approval-dataset) from Kaggle.
 
-Try app [here](https://titanic.streamlit.app/)!
+Try app [here](https://loan-predictor-demo.streamlit.app/)!
 
 ## Files
 
@@ -52,6 +52,6 @@ Make sure it's in a public folder and that you have a `requirements.txt` file.
 Sign into share.streamlit.io with your GitHub email address, you need to have access to Streamlit Cloud service.
  
 3. Deploy and share!  
-Click "New app", then fill in your repo, branch, and file path, choose a Python version (3.12.3 for this demo) and click "Deploy", then you should be able to see your app.
+Click "New app", then fill in your repo, branch, and file path, choose a Python version (3.12 for this demo) and click "Deploy", then you should be able to see your app.
 
 
