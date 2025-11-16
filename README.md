@@ -52,6 +52,6 @@ Make sure it's in a public folder and that you have a `requirements.txt` file.
 Sign into share.streamlit.io with your GitHub email address, you need to have access to Streamlit Cloud service.
  
 3. Deploy and share!  
-Click "New app", then fill in your repo, branch, and file path, choose a Python version (3.9 for this demo) and click "Deploy", then you should be able to see your app.
+Click "New app", then fill in your repo, branch, and file path, choose a Python version (3.12.3 for this demo) and click "Deploy", then you should be able to see your app.
 
 
